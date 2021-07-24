@@ -1,2 +1,9 @@
 npx create-react-app go-barber --template=typescript
 yarn add styled-components
+yarn add react-icons
+yarn add polished
+
+
+--------------------------------
+Para trabalhar com imagens resposivas é melhor inserir elas numa div
+ao inves de setar como background
