@@ -1,0 +1,2 @@
+npx create-react-app go-barber --template=typescript
+yarn add styled-components
