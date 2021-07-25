@@ -2,8 +2,12 @@ npx create-react-app go-barber --template=typescript
 yarn add styled-components
 yarn add react-icons
 yarn add polished
-
+atenção Lib da Rocket = yarn add @unform/core @unform/web
 
 --------------------------------
 Para trabalhar com imagens resposivas é melhor inserir elas numa div
 ao inves de setar como background
+
+UseRef - acessar um elemento via referencia direta
+igual a como fazemos ao tentar acesso o DOM diretamente com js.. documente.getElement....
+Ao associar um elemento com  ref eu vou conseguir acessar ele na DOM
