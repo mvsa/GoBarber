@@ -11,3 +11,15 @@ ao inves de setar como background
 UseRef - acessar um elemento via referencia direta
 igual a como fazemos ao tentar acesso o DOM diretamente com js.. documente.getElement....
 Ao associar um elemento com  ref eu vou conseguir acessar ele na DOM
+
+-------------------
+No js sempre que eu tiver uma funcao(filho) declarada dentro de outra funcao(pai)
+Ao chamaar o pai ela vai recriar a funcao filho em memoria.
+
+Nesse caso para evitar essas recriaçoes desnecessarias, sempre que formos criar uma funcao filho
+em vez de setar como: function newFunction vamos, ao inves, utilizando o hook useCallback
+vamos criar funções que nao vao ser recriadas sempre que o pai for chamado, elas vao ficar salvas
+em memoria´.
+A função so vai ser recriada se algo que estiver setado no array de dependencias for alterado
+
+--esse conceito tbm é aplicado em arrow functions setadas nos inputs
