@@ -1,8 +1,11 @@
 import styled, { css } from 'styled-components';
 
+import Tooltip from '../Tooltip';
+
 interface ContainerPropos {
   isFocused: boolean;
   isFilled: boolean;
+  hasError: boolean;
 }
 
 export const Container = styled.div<ContainerPropos>`
@@ -22,6 +25,12 @@ export const Container = styled.div<ContainerPropos>`
   }
 
   ${props =>
+    props.hasError &&
+    css`
+      border-color: #c53030;
+    `} // A ordem afeta o css?
+
+  ${props =>
     props.isFocused &&
     css`
       color: #ff9000;
@@ -33,6 +42,8 @@ export const Container = styled.div<ContainerPropos>`
     css`
       color: #ff9000;
     `}
+
+
 
   input {
     color: #f4ede8;
@@ -47,5 +58,23 @@ export const Container = styled.div<ContainerPropos>`
 
   svg {
     margin-right: 16px;
+  }
+`;
+
+export const Error = styled(Tooltip)`
+  //quase que uma herança de estilizacao/ em um elemento superior estou etilizando um inferior
+  height: 20px;
+  margin-left: 16px;
+  svg {
+    margin: 0;
+  }
+
+  span {
+    background: #c53030;
+    color: #fff;
+
+    &::before {
+      border-color: #c53030 transparent;
+    }
   }
 `;
