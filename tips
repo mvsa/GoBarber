@@ -3,6 +3,7 @@ yarn add styled-components
 yarn add react-icons
 yarn add polished
 atenção Lib da Rocket = yarn add @unform/core @unform/web
+yarn add yup
 
 --------------------------------
 Para trabalhar com imagens resposivas é melhor inserir elas numa div
