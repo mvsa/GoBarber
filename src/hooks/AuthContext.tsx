@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useState } from 'react';
+import React, { createContext, useCallback, useState, useContext } from 'react';
 import api from '../services/api';
 
 interface AuthState {
@@ -16,11 +16,10 @@ interface AuthContextState {
   // eslint-disable-next-line @typescript-eslint/ban-types
   user: object;
   signIn(credentials: SignInCredentials): Promise<void>;
+  signOut(): void;
 }
 
-export const AuthContext = createContext<AuthContextState>(
-  {} as AuthContextState,
-); // hack para quando preciso passa o valor inicial como vazio
+const AuthContext = createContext<AuthContextState>({} as AuthContextState); // hack para quando preciso passa o valor inicial como vazio
 
 export const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>(() => {
@@ -45,9 +44,26 @@ export const AuthProvider: React.FC = ({ children }) => {
     setData({ token, user });
   }, []);
 
+  const signOut = useCallback(() => {
+    localStorage.removeItem('@Gobarber:token');
+    localStorage.removeItem('@Gobarber:user');
+
+    setData({} as AuthState);
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn }}>
+    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
 };
+
+export function useAuth(): AuthContextState {
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error('UseAuth must be used within an AuthProvider');
+  }
+
+  return context;
+}

@@ -27,3 +27,5 @@ A função so vai ser recriada se algo que estiver setado no array de dependenci
 --esse conceito tbm é aplicado em arrow functions setadas nos inputs
 
 <AuthContext.Provider> - Todo componente dentro dessa tag terá acesso aos valores salvos no contexto especificado
+
+{children} = tudo oq o componente receber como filho é repassado para dentro do componente
